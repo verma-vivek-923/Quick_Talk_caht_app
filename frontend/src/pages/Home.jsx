@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../components/navbar";
-import Left from "../left";
-import Right from "../right";
+import Navbar from "../components/Navbar";
+import Left from "../Left";
+import Right from "../Right";
 
 const Home = () => {
 

@@ -1,7 +1,4 @@
 import React from "react";
-import Navbar from "./components/navbar";
-import Left from "./left";
-import Right from "./right";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Login from "./pages/Login";
 import { Toaster } from "react-hot-toast";
