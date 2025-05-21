@@ -8,12 +8,13 @@ const {socket}=useSocket();
 const {newMessage,setNewMessage}=selection();
 
 useEffect(()=>{
-    
-    socket.on("new_msg",(new_msg)=>{
-        const notify=new Audio(sound);
-        notify.play();
-        setNewMessage(new_msg);
-    })
+    if(socket){
+        socket.on("new_msg",(new_msg)=>{
+            const notify=new Audio(sound);
+            notify.play();
+            setNewMessage(new_msg);
+        })
+    }
     return ()=>{
         socket.off("new_msg")
     }
