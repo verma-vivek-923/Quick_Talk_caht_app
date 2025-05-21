@@ -19,8 +19,8 @@ const App = () => {
           exact
           path="/"
           element={profile ? <Home />  :
-           <Home />
-          // <Navigate to={"/login"} />
+          //  <Home />
+          <Navigate to={"/login"} />
         }
         />
         <Route
