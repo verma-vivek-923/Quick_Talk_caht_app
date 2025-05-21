@@ -78,8 +78,8 @@ const Users = () => {
       </div>
       <div className="py-4 px-2  h-full overflow-x-scroll ">
         {filteredUser && filteredUser.length > 0 ? (
-          filteredUser.map((element) => {
-            if (element._id === profile._id) {
+          filteredUser?.map((element) => {
+            if (element._id === profile?._id) {
               return [];
             }
             return (
