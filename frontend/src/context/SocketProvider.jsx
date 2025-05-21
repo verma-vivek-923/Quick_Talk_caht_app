@@ -21,7 +21,7 @@ const SocketProvider = ({ children }) => {
 
   useEffect(() => {
     if (profile) {
-      const socket = io("http://localhost:4500", {
+      const socket = io(`${import.meta.env.VITE_BACKEND_URL}`, {
         query: {
           userId: profile._id,
         },
