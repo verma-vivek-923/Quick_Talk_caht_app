@@ -1,6 +1,5 @@
 import React from 'react'
-import Search from './left/search'
-import Users from './left/users'
+import Users from './left/Users'
 
 const Left = ({drawerClass}) => {
   return (
