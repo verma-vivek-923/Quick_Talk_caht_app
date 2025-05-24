@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 import { MdOutlineSend } from "react-icons/md";
 import { LoadingCircle } from "../components/Loading";
 import selection from "../context/selection";
@@ -20,6 +21,9 @@ const Type_send = () => {
     formData.append("message", sendMessage);
     // formData.append("role", role);
     // formData.append("password", password);
+    if(!sendMessage){
+      return toast.error("Invidid input")
+    }
 
     if (selectedUser) {
       setLoading(true)
