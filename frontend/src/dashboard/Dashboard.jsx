@@ -109,7 +109,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center">
       <div className="bg-gray-800 rounded-xl h-screen p-6 w-full max-w-md space-y-6 shadow-xl">
-        <div className="dropdown dropdown-right dropdown-start flex items-center justify-between ">
+        <div className="dropdown dropdown-bottom md:dropdown-right flex items-center justify-between ">
           <div className="ring-2 ring-gray-500 ring-offset-2 ring-offset-base-100 bg-gray-600 h-24 w-24 rounded-full flex items-center overflow-hidden justify-center text-4xl text-gray-300">
             <img
               src={preview}
