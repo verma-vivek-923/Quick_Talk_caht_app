@@ -2,9 +2,9 @@
 
 const avatar_list = () => {
     const maleAvatars = [
-        { id: "1", url: "public/Avatar_Images/Male/1.png" },
-        { id: "11", url: "public/Avatar_Images/Male/11.png" },
-        { id: "38", url: "public/Avatar_Images/Male/38.png" },
+        { id: "1", url: "/Avatar_Images/Male/1.png" },
+        { id: "11", url: "/Avatar_Images/Male/11.png" },
+        { id: "38", url: "/Avatar_Images/Male/38.png" },
         { id: "40", url: "/Avatar_Images/Male/40.png" },
         { id: "46", url: "/Avatar_Images/Male/46.png" },
         { id: "police", url: "/Avatar_Images/Male/male.png" },
