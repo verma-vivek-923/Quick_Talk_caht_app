@@ -58,7 +58,7 @@ const Type_send = () => {
   return (
     <form
       onSubmit={handleSend}
-      className="w-full gap-2 border-x-1 px-8 py- sticky right-0 bottom-0 flex justify-between items-center border-gray-900  h-[8%] bg-gray-800"
+      className="w-full gap-2 border-x-1 px-8 py- sticky right-0 bottom-0 flex justify-between items-center border-gray-900  h-[6%] bg-gray-800"
     >
       <div className="flex w-full h-full justify-start items-center">
         <input

@@ -11,7 +11,7 @@ const Right = (drawerClass) => {
     <div className={`${drawerClass} flex-grow bg-gray-600`}>
     {/* <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Open drawer</label> */}
       {selectedUser ? (
-        <div className=" h-screen relative flex flex-col justify-between ">
+        <div className=" h-[100dvh] relative flex flex-col justify-between ">
           <Toppannel />
           <MessagePannel />
           <Type_send />

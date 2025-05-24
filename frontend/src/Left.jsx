@@ -8,7 +8,7 @@ const Left = ({drawerClass}) => {
   const {selectOption}=selection();
 
   return (
-    <div className={`${drawerClass}  h-screen bg-gray-800 `}>
+    <div className={`${drawerClass}  h-[100dvh] bg-gray-800 `}>
         {/* <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label> */}
      {/* <Search/> */}
 

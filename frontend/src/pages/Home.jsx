@@ -16,7 +16,7 @@ const Home = () => {
         {/* <Dashboard/> */}
       </div>
 
-      <div className="drawer md:hidden md:drawer-open min-h-screen w-full flex">
+      <div className="drawer md:hidden md:drawer-open min-[100dvh] w-full flex">
         <input id="my-drawer"  type="checkbox" defaultChecked className="drawer-toggle hidden" />
         <Navbar />
 
