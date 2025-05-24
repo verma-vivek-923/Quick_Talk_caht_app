@@ -9,7 +9,7 @@ const Home = () => {
   
   return (
     <>
-      <div className=" hidden md:flex min-full w-full ">
+      <div className=" hidden md:flex min-h-[100dvh] w-full ">
         <Navbar />
         <Left drawerClass="w-[20%]" />
         <Right drawerClass="" />
