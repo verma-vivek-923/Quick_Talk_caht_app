@@ -12,7 +12,7 @@ function SignupForm() {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
-  // const [role, setRole] = useState("");
+  const [gender, setGender] = useState("");
   // const [otp, setOtp] = useState("");
   // const [education, setEducation] = useState("");
   const [photo, setPhoto] = useState("");
@@ -109,9 +109,9 @@ function SignupForm() {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("password", password);
-    formData.append("cpassword", cpassword);
+    formData.append("cpassword", password);
     formData.append("phone", mobile);
-    // formData.append("role", role);
+    formData.append("gender", gender);
     // formData.append("education", education);
     formData.append("photo", photo);
 
@@ -194,7 +194,7 @@ function SignupForm() {
               <option value="msc">M.Sc.</option>
             </select>
           </div> */}
-          <div className="flex  items-center ">
+          {/* <div className="flex  items-center ">
             <div className="w-14 h-14 rounded-full flex justify-center items-center overflow-hidden photo">
               {
                 <img
@@ -214,9 +214,9 @@ function SignupForm() {
                 onChange={changephotoHandler}
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className="flex gap-2 mb-3">
+          <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
             <input
               type="text"
               name={name}
@@ -225,51 +225,99 @@ function SignupForm() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="w-full p-2 focus:bg-slate-100 border border-gray-300 rounded-md"
+              className="w-full p-2 focus:outline-none focus:bg-slate-100"
             />
           </div>
 
-          <input
-            type="text"
-            name={mobile}
-            autoComplete="off"
-            placeholder="Mobile number"
-            value={mobile}
-            onChange={(e) => setMobile(e.target.value)}
-            required
-            className="w-full p-2 border focus:bg-slate-100 border-gray-300 rounded-md mb-3"
-          />
-          <input
-            type="text"
-            name={email}
-            autoComplete="off"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full p-2 border focus:bg-slate-100 border-gray-300 rounded-md mb-3"
-          />
+          <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
+            <div className="flex items-center px-4 border-r border-gray-300 bg-gray-100 text-gray-700 font-medium">
+              +91
+            </div>
+            <input
+              type="text"
+              name="mobile"
+              placeholder="Phone Number *"
+              inputMode="numeric"
+              maxLength="11"
+              value={mobile}
+              onChange={(e) => {
+                let val = e.target.value.replace(/\D/g, "");
+                if (val.length > 10) val = val.slice(0, 10);
+                if (val.length > 5) val = val.slice(0, 5) + " " + val.slice(5);
+                setMobile(val);
+              }}
+              className="w-full p-2 focus:outline-none focus:bg-slate-100"
+              required
+            />
+          </div>
 
-          <input
-            type="password"
-            name={password}
-            autoComplete="off"
-            placeholder="New password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full p-2 focus:bg-slate-100 border border-gray-300 rounded-md mb-4"
-          />
-          <input
-            type="password"
-            name={cpassword}
-            autoComplete="off"
-            placeholder="confirm password"
-            value={cpassword}
-            onChange={(e) => setCpassword(e.target.value)}
-            required
-            className="w-full p-2 focus:bg-slate-100 border border-gray-300 rounded-md mb-4"
-          />
+          <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
+            <input
+              type="text"
+              name={email}
+              autoComplete="off"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full p-2 focus:outline-none focus:bg-slate-100"
+            />
+          </div>
+
+          <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
+            <input
+              type="password"
+              name={password}
+              autoComplete="off"
+              placeholder="New password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full p-2 focus:outline-none focus:bg-slate-100"
+            />
+          </div>
+
+          <div className="flex gap-4 items-center">
+            <label>Gender : </label>
+            <label className="flex items-center gap-1">
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={gender === "male"}
+                onChange={(e) => setGender(e.target.value)}
+                required
+                className="radio radio-xs radio-primary"
+              />
+              Male
+            </label>
+
+            <label className="flex items-center gap-1">
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={gender === "female"}
+                onChange={(e) => setGender(e.target.value)}
+                required
+                className="radio radio-xs radio-primary"
+              />
+              Female
+            </label>
+          </div>
+
+          {/* <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
+            <input
+              type="password"
+              name={cpassword}
+              autoComplete="off"
+              placeholder="confirm password"
+              value={cpassword}
+              onChange={(e) => setCpassword(e.target.value)}
+              required
+              className="w-full p-2 focus:outline-none focus:bg-slate-100"
+            />
+          </div> */}
 
           <button
             disabled={loadingSend}
@@ -319,7 +367,6 @@ function SignupForm() {
       >
         open modal
       </button> */}
-     
     </div>
   );
 }

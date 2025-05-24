@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Dashboard from "../dashboard/Dashboard";
 import Left from "../Left";
 import Right from "../Right";
 
@@ -12,13 +13,14 @@ const Home = () => {
         <Navbar />
         <Left drawerClass="w-[20%]" />
         <Right drawerClass="" />
+        {/* <Dashboard/> */}
       </div>
 
       <div className="drawer md:hidden md:drawer-open min-h-screen w-full flex">
         <input id="my-drawer"  type="checkbox" defaultChecked className="drawer-toggle hidden" />
         <Navbar />
 
-        <div className="drawer-side lg:hidden w-full  ">
+        <div className="drawer-side md:hidden w-full  ">
           <label
             htmlFor="my-drawer"
             aria-label="close sidebar"

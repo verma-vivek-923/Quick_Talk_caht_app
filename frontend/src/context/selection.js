@@ -6,7 +6,10 @@ const selection =create((set) => ({
     setSelectedUser: (selectedUser) => set({selectedUser }),
     
     newMessage : [],
-    setNewMessage : (newMessage) => set({newMessage})
+    setNewMessage : (newMessage) => set({newMessage}),
+
+    selectOption:"chat",
+    setSelectOption : (selectOption) => set({selectOption}),
 
   }))
   

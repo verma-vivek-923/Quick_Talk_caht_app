@@ -11,8 +11,8 @@ useEffect(()=>{
     if(socket){
         socket.on("new_msg",(new_msg)=>{
             const notify=new Audio(sound);
-            notify.play();
             setNewMessage(new_msg);
+            notify.play();
         })
     }
     return ()=>{

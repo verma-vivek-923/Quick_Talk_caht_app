@@ -17,7 +17,7 @@ const SocketProvider = ({ children }) => {
 
   const { profile } = useAuth();
 
-  // console.log(profile);
+  console.log(import.meta.env.VITE_BACKEND_URL);
 
   useEffect(() => {
     if (profile) {

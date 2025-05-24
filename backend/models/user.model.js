@@ -13,11 +13,11 @@ const user_schema=mongoose.Schema({
         type:String,
         required:true
     },
-    // role:{
-    //     type:String,
-    //     required:true,
-    //     enum:['user','admin']
-    // },
+    gender:{
+        type:String,
+        required:true,
+        enum:['male','female']
+    },
     image:{
         public_id:{
             type:String,
@@ -32,7 +32,7 @@ const user_schema=mongoose.Schema({
     //     required:true,
     // },
     phone:{
-        type:Number,
+        type:String,
         required:true,
         unique:true
     },
