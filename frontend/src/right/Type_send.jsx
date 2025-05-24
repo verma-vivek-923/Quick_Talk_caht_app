@@ -22,7 +22,8 @@ const Type_send = () => {
     // formData.append("role", role);
     // formData.append("password", password);
     if(!sendMessage){
-      return toast.error("Invidid input")
+      return 
+      
     }
 
     if (selectedUser) {
