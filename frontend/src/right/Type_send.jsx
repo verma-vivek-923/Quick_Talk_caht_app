@@ -21,13 +21,15 @@ const Type_send = () => {
     formData.append("message", sendMessage);
     // formData.append("role", role);
     // formData.append("password", password);
+    setLoading(true)
     if(!sendMessage){
+      setLoading(false)
+
       return 
-      
+
     }
 
     if (selectedUser) {
-      setLoading(true)
       try {
         const { data } = await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/message/send/${
