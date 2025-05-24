@@ -19,8 +19,9 @@ const Right = (drawerClass) => {
       ) : (
         
        <div className="w-full h-full flex justify-center items-center">
-            <h1  className="text-2xl ">
-              Welcome To Chat App
+            <h1  className="text-2xl text-center ">
+              Welcome To <br/>
+            <span className="text-5xl">Quick<span className="text-accent">Talk</span></span>  
             </h1>
        </div>
       )}

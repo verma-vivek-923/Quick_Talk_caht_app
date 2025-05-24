@@ -51,12 +51,12 @@ const MessagePannel = () => {
             {isReceived(msg) ? (
               <div className="chat chat-start">
                 <div className="chat-bubble">{msg.message}</div>
-                <div className="chat-footer opacity-100">Seen</div>
+                {/* <div className="chat-footer opacity-100">Seen</div> */}
               </div>
             ) : (
               <div className="chat chat-end">
                 <div className="chat-bubble bg-green-900">{msg.message}</div>
-                <div className="chat-footer opacity-100">Delivered</div>
+                {/* <div className="chat-footer opacity-100">Delivered</div> */}
               </div>
             )}
           </div>
