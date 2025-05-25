@@ -305,7 +305,7 @@ const Dashboard = () => {
           className="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded"
         >
           {!loading ? (
-            "Log In"
+            "Log out"
           ) : (
             <div className="flex justify-center items-center space-x-2">
               <LoadingCircle />
