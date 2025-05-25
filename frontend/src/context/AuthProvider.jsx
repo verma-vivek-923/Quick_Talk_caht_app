@@ -8,6 +8,7 @@ export const AuthProvider = ({children}) => {
 
 const [profile,setProfile]=useState();
 const [isAuthen,setIsAuthen]=useState(false);
+const [loading,setLoading]=useState(true)
 
 useEffect(() => {
   const fetchProfile=async ()=>{
@@ -15,11 +16,13 @@ useEffect(() => {
     const islog = localStorage.getItem("user");
 
     if(!token && !islog){
-        console.log("first")
+        // console.log("first")
+        setLoading(false)
             return 0;
     }
 
     try {
+      // setLoading(true)
         const {data}=await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/my-profile`,
         {
           withCredentials: true,
@@ -28,12 +31,13 @@ useEffect(() => {
           },
         }
       );
-      console.log(data)
+      // console.log(data)
       setProfile(data.user_data)
       setIsAuthen(true)
-
+        setLoading(false)
     } catch (err) {
         console.log(err)
+        setLoading(false)
     }
   }
  fetchProfile()
@@ -42,7 +46,7 @@ useEffect(() => {
 
 return (
     <authContext.Provider
-      value={{ profile, isAuthen, setIsAuthen,setProfile}}
+      value={{ profile, isAuthen,loading, setIsAuthen,setProfile}}
     >
       {children}
     </authContext.Provider>

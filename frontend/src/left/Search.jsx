@@ -3,13 +3,13 @@ import React, { useEffect, useState } from "react";
 const Search = ({ users, onSearch }) => {
   const [searchVal, setSearchVal] = useState("");
 
-  console.log(users);
+  // console.log(users);
 
   useEffect(() => {
     const searchResult = users?.filter((user) =>
       user.name.toLowerCase().includes(searchVal.toLowerCase())  //must use return if use {} for any function
     );
-    console.log(searchResult);
+    // console.log(searchResult);
     onSearch(searchResult);
   }, [searchVal, users]);
 

@@ -8,9 +8,25 @@ import { useAuth } from "./context/AuthProvider";
 // import ErrorBoundary from './ErrorBoundary';
 
 const App = () => {
-  const { profile, isAuthen } = useAuth();
+  const { profile, loading} = useAuth();
 
-  console.log(profile, isAuthen);
+  console.log(profile,loading);
+
+  if(loading){
+    return (
+      <div className="min-h-[100dvh] w-full bg-gray-800">
+         <div className="w-full h-[100dvh] flex-col flex justify-center items-center">
+            <h1  className="text-2xl lg:text-3xl text-center ">
+              Welcome To <br/>
+            <span className="text-5xl lg:text-6xl">Quick<span className="text-accent">Talk</span></span>  
+            </h1>
+          <div>
+          <progress className="progress w-56"></progress>
+          </div>
+       </div>
+      </div>
+    )
+  }
 
   return (
     <div>

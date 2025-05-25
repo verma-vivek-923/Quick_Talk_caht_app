@@ -16,12 +16,12 @@ const Users = () => {
 
   const { socket, onlineUser } = useSocket();
   //   const isSelected = (value) =>{
-  //    console.log(selectedUser?._id)
-  //    console.log(value._id)
+  //    // console.log(selectedUser?._id)
+  //    // console.log(value._id)
 
   //  const val= selectedUser?._id===value?._id ? true : false
 
-  //  console.log(val)
+  //  // console.log(val)
   //  return val
 
   // }
@@ -43,7 +43,7 @@ const Users = () => {
             },
           }
         );
-        console.log(data);
+        // console.log(data);
         setAllUser(data);
         setFilteredUser(data);
       } catch (error) {
@@ -53,20 +53,20 @@ const Users = () => {
     getAllUsers();
   }, []);
 
-  console.log(allUser);
-  console.log(filteredUser);
-  // console.log(onlineUser?.id);
+  // console.log(allUser);
+  // console.log(filteredUser);
+  // // console.log(onlineUser?.id);
   const [searchVal, setSearchVal] = useState("vivek");
 
   // Search Logic
   const handleSearch = (searchResult) => {
-    console.log(searchResult);
+    // console.log(searchResult);
 
     if (searchResult && searchResult.length > 0) {
       setFilteredUser(searchResult);
     }
   };
-  console.log(filteredUser);
+  // console.log(filteredUser);
   //online status Logic
   const isOnline = (value) => (onlineUser.includes(value?._id) ? true : false);
 
@@ -106,7 +106,7 @@ const Users = () => {
                         <img src={element?.image?.url} />
                       </div>
                     </div>
-                    {/* {isSelected(element._id) ?  console.log("first"): ""} */}
+                    {/* {isSelected(element._id) ?  // console.log("first"): ""} */}
                     <div className="px-4 overflow-hidden flex flex-col justify-center">
                       <h1 className="text-lg truncate font-bold group-hover:tracking-wider transition-all duration-300">
                         {element.name}

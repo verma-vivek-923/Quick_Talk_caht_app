@@ -17,7 +17,7 @@ const SocketProvider = ({ children }) => {
 
   const { profile } = useAuth();
 
-  console.log(import.meta.env.VITE_BACKEND_URL);
+  //// console.log(import.meta.env.VITE_BACKEND_URL);
 
   useEffect(() => {
     if (profile) {
@@ -26,7 +26,7 @@ const SocketProvider = ({ children }) => {
           userId: profile._id,
         },
       });
-      console.log(socket);
+      //// console.log(socket);
       setSocket(socket);
       socket.on("all_online_users", (online) => {
         setOnlineUser(online);
@@ -43,7 +43,7 @@ else{
 
   }, [profile]);
   
-  console.log(onlineUser);
+  //// console.log(onlineUser);
   return (
     <socketContext.Provider value={{ socket,onlineUser }}>
       {children}
