@@ -159,7 +159,7 @@ function SignupForm() {
       </Link>
 
       <h1 className="text-4xl font-bold  mb-4">
-        Found<span className="text-blue-600">Hub</span>
+        Quick<span className="text-accent">Talk</span>
       </h1>
       <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
         <h2 className="text-2xl text-center font-semibold mb-1">

@@ -67,7 +67,7 @@ const Login = () => {
         <span>Home</span>
       </Link> */}
       <h1 className="text-4xl font-bold  mb-4">
-        Cool<span className="text-blue-600">Blogs</span>
+        Quick<span className="text-primary">Talk</span>
       </h1>
       <div className="bg-white rounded-lg shadow-lg p-6 w-full mb-10 max-w-md">
         <h2 className="text-2xl text-center font-semibold mb-1">
