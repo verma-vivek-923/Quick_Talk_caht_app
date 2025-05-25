@@ -71,7 +71,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-[45px] z-[50] md:flex  overflow-hidden min-h-[100dvh] max-h-[100dvh]  bg-slate-900">
+    <div className="w-[45px] z-[50] md:flex  overflow-hidden min-h-[100dvh] max-h-[100dvh] px-2  bg-slate-900">
       <div className="h-full w-full flex flex-col items-center justify-between">
         <div className="flex flex-col items-center justify-center mt-8 gap-4">
           <label

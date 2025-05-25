@@ -13,7 +13,7 @@ const Toppannel = () => {
 
   return (
     <>
-      <div className="w-full border-x-1 px-8 py-2 flex justify-between items-center border-gray-900  h-[8%] bg-gray-800">
+      <div className="w-full border-x-1 sticky px-8 py-2 flex justify-between items-center border-gray-900  h-[8%] bg-gray-800">
         <div>
           <div
             tabIndex={0}
