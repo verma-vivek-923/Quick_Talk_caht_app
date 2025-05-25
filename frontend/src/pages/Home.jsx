@@ -9,7 +9,7 @@ const Home = () => {
   
   return (
     <>
-      <div className=" hidden md:flex max-h-[100dvh] w-full ">
+      <div className=" hidden md:flex max-h-[100dvh] overflow-y-auto w-full ">
         <Navbar />
         <Left drawerClass="w-[20%]" />
         <Right drawerClass="" />
