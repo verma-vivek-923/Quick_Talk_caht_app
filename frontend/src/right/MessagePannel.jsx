@@ -18,7 +18,9 @@ const MessagePannel = () => {
       if (selectedUser) {
         try {
           const { data } = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/message/get-all/${selectedUser._id}`,
+            `${import.meta.env.VITE_BACKEND_URL}/message/get-all/${
+              selectedUser._id
+            }`,
             {
               withCredentials: true,
               headers: {
@@ -43,25 +45,27 @@ const MessagePannel = () => {
   }, [chatMessages]);
 
   return (
-    <div className="w-full h-[80%] overflow-y-auto px-6 py-4 flex flex-col">
-      {chatMessages.map((msg, index) => {
-        const isLast = index === chatMessages.length - 1;
-        return (
-          <div key={msg._id} ref={isLast ? lastMsgRef : null}>
-            {isReceived(msg) ? (
-              <div className="chat chat-start">
-                <div className="chat-bubble">{msg.message}</div>
-                {/* <div className="chat-footer opacity-100">Seen</div> */}
-              </div>
-            ) : (
-              <div className="chat chat-end">
-                <div className="chat-bubble bg-green-900">{msg.message}</div>
-                {/* <div className="chat-footer opacity-100">Delivered</div> */}
-              </div>
-            )}
-          </div>
-        );
-      })}
+    <div className="w-full h-[80%]   flex flex-col justify-end  ">
+      <div className=" overflow-y-auto px-6 lg:px-16 ">
+        {chatMessages.map((msg, index) => {
+          const isLast = index === chatMessages.length - 1;
+          return (
+            <div key={msg._id} ref={isLast ? lastMsgRef : null}>
+              {isReceived(msg) ? (
+                <div className="chat chat-start">
+                  <div className="chat-bubble">{msg.message}</div>
+                  {/* <div className="chat-footer opacity-100">Seen</div> */}
+                </div>
+              ) : (
+                <div className="chat chat-end">
+                  <div className="chat-bubble bg-green-900">{msg.message}</div>
+                  {/* <div className="chat-footer opacity-100">Delivered</div> */}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

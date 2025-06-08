@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
-
+import { MdOutlineEmail } from "react-icons/md";
+import { TbLockPassword } from "react-icons/tb";
 import { IoHome } from "react-icons/io5";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -38,7 +39,7 @@ const Login = () => {
       navigateTo("/");
       // <Navigate to={"/register"}/>
       toast.success("LogIn Successfull", { duration: 3000 });
-      localStorage.setItem("user","loggedIn");
+      localStorage.setItem("user", "loggedIn");
       // setRole("");
       setPassword("");
       setEmail("");
@@ -46,7 +47,7 @@ const Login = () => {
         window.location.pathname = "/";
       }, 1500);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       const err = error?.response?.data?.message;
       if (err) {
         toast.error(err + "!");
@@ -66,8 +67,8 @@ const Login = () => {
         <IoHome />
         <span>Home</span>
       </Link> */}
-      <h1 className="text-4xl font-bold  mb-4">
-        Quick<span className="text-primary">Talk</span>
+     <h1 className="text-4xl font-bold  mb-4">
+        Quick<span className="text-accent">Talk</span>
       </h1>
       <div className="bg-white rounded-lg shadow-lg p-6 w-full mb-10 max-w-md">
         <h2 className="text-2xl text-center font-semibold mb-1">
@@ -88,34 +89,56 @@ const Login = () => {
             </select>
           </div> */}
 
-          <input
-            type="text"
-            name={email}
-            autoComplete="off"
-            placeholder="Email address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-            className="w-full p-2 border focus:bg-slate-100 border-gray-300 rounded-md mb-3"
-          />
+          <div className="flex mb-2 items-center border rounded p-2 focus-within:bg-slate-100">
+            <MdOutlineEmail className="text-gray-500 mr-2" />
+            <input
+              type="text"
+              name="email"
+              autoComplete="off"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full focus:outline-none"
+            />
+          </div>
 
-          <input
-            type="password"
-            name={password}
-            autoComplete="off"
-            placeholder="New password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="w-full p-2 focus:bg-slate-100 border border-gray-300 rounded-md mb-2"
-          />
+          <div className="flex mb-2 items-center border rounded p-2 focus-within:bg-slate-100">
+           <TbLockPassword className="text-gray-500 mr-2" />
+           <input
+              type="password"
+              name={password}
+              autoComplete="off"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full focus:outline-none focus:bg-slate-100"
+            />
+          </div>
+
+          {/* <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
+            <input
+              type="password"
+              name={password}
+              autoComplete="off"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full p-2 focus:outline-none focus:bg-slate-100"
+            />
+          </div> */}
           <div className="flex justify-end px-6 mb-4">
-            <Link to={"/forgot-password"}  className="text-sm cursor-pointer hover:underline hover:tracking-tight duration-300 text-blue-700" >
+            <Link
+              to={"/forgot-password"}
+              className="text-sm cursor-pointer hover:underline hover:tracking-tight duration-300 text-blue-700"
+            >
               Forgot Password ?
             </Link>
           </div>
           <button
-          disabled={loading}
+            disabled={loading}
             type="submit"
             className="w-full bg-green-600 mt-2 text-white py-2 rounded-md md:font-semibold hover:bg-green-700"
           >
