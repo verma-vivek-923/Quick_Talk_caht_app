@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 // import Loading from "../components/loading";
 import { IoHome } from "react-icons/io5";
+import axiosInstance from "../utilities/axiosInstance";
 function SignupForm() {
   const navigateTo = useNavigate();
 
@@ -117,21 +118,9 @@ function SignupForm() {
 
     setLoadingSend(true);
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/user/register`,
-        formData, //sending form data to /signup endpoint
-        {
-          withCredentials: true, // This option allows sending cookies and other credentials (like authorization tokens) along with the request.
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const { data } = await axiosInstance.post("/user/register", formData);
 
       toast.success("Sign Up Successfull");
-      // console.log(data.create_user);
-      // setProfile(data.create_user);
-      // setLoadingSend(false);
       localStorage.setItem("user", "loggedIn");
       navigateTo("/");
       setTimeout(() => {

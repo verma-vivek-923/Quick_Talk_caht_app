@@ -26,13 +26,13 @@ const online_users={}
 
 //listen event of server sidd
 io.on("connection",(socket)=>{
-    console.log("connected",socket.id);
+    //console.log("connected",socket.id);
 
     const{ userId}=socket.handshake.query;
 
 if(userId){
 online_users[userId]=socket.id;
-console.log(online_users)
+//console.log(online_users)
 }
 
 //send event to all connevted user
@@ -40,7 +40,7 @@ io.emit("all_online_users",Object.keys(online_users))
 
     //listen events emitted by server
     socket.on("disconnect",()=>{
-        console.log("Disconnected",socket.id)
+        //console.log("Disconnected",socket.id)
         delete online_users[userId];
         io.emit("all_online_users",Object.keys(online_users))
 

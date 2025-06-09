@@ -5,10 +5,11 @@ import { toast } from "react-hot-toast";
 import { MdOutlineSend } from "react-icons/md";
 import { LoadingCircle } from "../components/Loading";
 import selection from "../context/selection";
+import axiosInstance from "../utilities/axiosInstance";
 
 const Type_send = () => {
   const { selectedUser, setNewMessage } = selection();
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
 
   const [sendMessage, setSendMessage] = useState();
 
@@ -21,36 +22,28 @@ const Type_send = () => {
     formData.append("message", sendMessage);
     // formData.append("role", role);
     // formData.append("password", password);
-    setLoading(true)
-    if(!sendMessage){
-      setLoading(false)
+    setLoading(true);
+    if (!sendMessage) {
+      setLoading(false);
 
-      return 
-
+      return;
     }
 
     if (selectedUser) {
       try {
-        const { data } = await axios.post(
-          `${import.meta.env.VITE_BACKEND_URL}/message/send/${
-            selectedUser?._id
-          }`,
-          formData,
-          {
-            withCredentials: true, // This option allows sending cookies and other credentials (like authorization tokens) along with the request.
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
+        const { data } = await axiosInstance.post(
+          `/message/send/${selectedUser?._id}`,
+          formData
         );
+        
         console.log(data);
         // setSelectedUser(selectedUser)
         setNewMessage(sendMessage);
         setSendMessage("");
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
         console.log(error);
-        setLoading(false)
+        setLoading(false);
       }
     }
   };
@@ -75,7 +68,7 @@ const Type_send = () => {
           <MdOutlineSend size={32} />
         ) : (
           <div className="flex justify-center items-center space-x-2">
-          <LoadingCircle/>
+            <LoadingCircle />
             {/* <span>Loging In...</span> */}
           </div>
         )}

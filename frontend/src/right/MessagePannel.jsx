@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import GetNewMessage from "../context/GetNewMessage";
 import selection from "../context/selection";
+import axiosInstance from "../utilities/axiosInstance";
 
 const MessagePannel = () => {
   const { selectedUser, newMessage } = selection();
@@ -17,17 +18,10 @@ const MessagePannel = () => {
     const getAllChat = async () => {
       if (selectedUser) {
         try {
-          const { data } = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/message/get-all/${
-              selectedUser._id
-            }`,
-            {
-              withCredentials: true,
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
+          const { data } = await axiosInstance.get(
+            `/message/get-all/${selectedUser._id}`
           );
+          
           setChatMessages(data?.conversion?.messages || []);
         } catch (error) {
           console.error(error);

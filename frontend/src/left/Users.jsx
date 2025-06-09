@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthProvider";
 
 import selection from "../context/selection";
 import SocketProvider, { useSocket } from "../context/SocketProvider";
+import axiosInstance from "../utilities/axiosInstance";
 import Search from "./Search";
 
 const Users = () => {
@@ -33,16 +34,7 @@ const Users = () => {
   useEffect(() => {
     const getAllUsers = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/user/admins`,
-          //sending form data to /signup endpoint
-          {
-            withCredentials: true, // This option allows sending cookies and other credentials (like authorization tokens) along with the request.
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const { data } = await axiosInstance.get(`/user/admins`);
         // console.log(data);
         setAllUser(data);
         setFilteredUser(data);

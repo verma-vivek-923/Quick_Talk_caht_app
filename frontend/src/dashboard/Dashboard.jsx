@@ -15,14 +15,14 @@ const Dashboard = () => {
   const [preview, setPreview] = useState(profile?.image?.url);
   const { maleAvatars, femaleAvatars } = avatar_list();
 
-  // console.log(profile.name);
-  // console.log(profile.email);
-  // console.log(profile.phone);
+  // //console.log(profile.name);
+  // //console.log(profile.email);
+  // //console.log(profile.phone);
 
   const selected_avatars =
     profile?.gender === "male" ? maleAvatars : femaleAvatars;
 
-  console.log(selected_avatars);
+  // //console.log(selected_avatars);
 
   const [userData, setUserData] = useState({
     name: profile?.name,
@@ -43,11 +43,11 @@ const Dashboard = () => {
   };
 
   const toggleEdit = (field) => {
-    console.log("first");
+    //console.log("first");
     setEditField({ ...editField, [field]: !editField[field] });
   };
 
-  console.log(userData);
+  //console.log(userData);
 
   const firstInitial = userData.name?.charAt(0)?.toUpperCase() || "U";
   const firstLastInitial =
@@ -64,14 +64,14 @@ const Dashboard = () => {
 
   const handleSave = async (e) => {
     e.preventDefault();
-    setLoadingSave(true)
+    setLoadingSave(true);
 
     const updated = await SaveChanges(userData, profile._id);
-    console.log(updated);
-    setProfile(updated.updated_profile);
+    //console.log(updated);
+    setProfile(updated?.updated_profile);
     toast.success("Changes Saved");
-    setLoadingSave(false)
-    // console.log(updated);
+    setLoadingSave(false);
+    // //console.log(updated);
   };
 
   const isChanged = () => {
@@ -86,23 +86,17 @@ const Dashboard = () => {
   };
 
   const handleLogout = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/user/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      const { data } = await axios.get(`/user/logout`);
       toast.success("Logout Successfull");
-      console.log(data);
       setProfile("");
       navigateTo("/login");
       localStorage.removeItem("user");
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
-      console.log(error);
-      setLoading(false)
+      //console.log(error);
+      setLoading(false);
     }
   };
 
@@ -301,7 +295,7 @@ const Dashboard = () => {
         )}
 
         <button
-         onClick={handleLogout}
+          onClick={handleLogout}
           className="w-full bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded"
         >
           {!loading ? (

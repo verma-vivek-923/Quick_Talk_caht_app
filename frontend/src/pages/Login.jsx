@@ -5,13 +5,13 @@ import { MdOutlineEmail } from "react-icons/md";
 import { TbLockPassword } from "react-icons/tb";
 import { IoHome } from "react-icons/io5";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import axiosInstance from "../utilities/axiosInstance";
 
 const Login = () => {
   const navigateTo = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [role, setRole] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -24,23 +24,14 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/user/login`,
-        formData, //sending form data to /signup endpoint
-        {
-          withCredentials: true, // This option allows sending cookies and other credentials (like authorization tokens) along with the request.
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const { data } = await axiosInstance.post("/user/login", formData);
       setLoading(false);
-      // setIsAuthen(true);
+
       navigateTo("/");
-      // <Navigate to={"/register"}/>
-      toast.success("LogIn Successfull", { duration: 3000 });
+
+      toast.success("LogIn Successfull , Redirecting...", { duration: 3000 });
       localStorage.setItem("user", "loggedIn");
-      // setRole("");
+
       setPassword("");
       setEmail("");
       setTimeout(() => {
@@ -67,7 +58,7 @@ const Login = () => {
         <IoHome />
         <span>Home</span>
       </Link> */}
-     <h1 className="text-4xl font-bold  mb-4">
+      <h1 className="text-4xl font-bold  mb-4">
         Quick<span className="text-accent">Talk</span>
       </h1>
       <div className="bg-white rounded-lg shadow-lg p-6 w-full mb-10 max-w-md">
@@ -104,8 +95,8 @@ const Login = () => {
           </div>
 
           <div className="flex mb-2 items-center border rounded p-2 focus-within:bg-slate-100">
-           <TbLockPassword className="text-gray-500 mr-2" />
-           <input
+            <TbLockPassword className="text-gray-500 mr-2" />
+            <input
               type="password"
               name={password}
               autoComplete="off"

@@ -9,34 +9,31 @@ import { useAuth } from "../context/AuthProvider";
 import Dashboard from "../dashboard/Dashboard";
 import selection from "../context/selection";
 import { LoadingCircle } from "./Loading";
+import axiosInstance from "../utilities/axiosInstance";
 
 const Navbar = () => {
   const { profile, isAuthen, setProfile } = useAuth();
   const { selectOption, setSelectOption } = selection();
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const navigateTo = useNavigate();
 
   const handleLogout = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/user/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      const { data } = await axiosInstance.get(`/user/logout`);
+      
       toast.success("Logout Successfull");
       console.log(data);
       setProfile("");
       navigateTo("/login");
       localStorage.removeItem("user");
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false)
+      setLoading(false);
     }
   };
   // console.log(profile);
@@ -75,7 +72,7 @@ const Navbar = () => {
       <div className="h-full w-full flex flex-col items-center justify-between">
         <div className="flex flex-col items-center justify-center mt-8 gap-4">
           <label
-            onClick={()=>toggleDrawer("chat")}
+            onClick={() => toggleDrawer("chat")}
             // htmlFor="my-drawer"
             className={`${
               isOpen ? "bg-green-800/40" : ""
@@ -84,8 +81,10 @@ const Navbar = () => {
             <IoMenuSharp size={22} />
           </label>
           <div
-            onClick={()=>openDrawer("chat")}
-            className={`${selectOption==="chat" ? "bg-green-900/50" :""} p-2 hover:bg-white/20  rounded-md transition-all duration-200`}
+            onClick={() => openDrawer("chat")}
+            className={`${
+              selectOption === "chat" ? "bg-green-900/50" : ""
+            } p-2 hover:bg-white/20  rounded-md transition-all duration-200`}
           >
             <MdOutlineMarkUnreadChatAlt size={22} />
           </div>
@@ -96,17 +95,21 @@ const Navbar = () => {
             className="p-2 hover:bg-white/20 rounded-md transition-all duration-200 text-red-400 hover:tracking-wider"
           >
             {!loading ? (
-             <BiLogOut size={22} />
+              <BiLogOut size={22} />
             ) : (
               <div className="flex justify-center items-center space-x-2">
-               <LoadingCircle/>
+                <LoadingCircle />
                 {/* <span>Loging In...</span> */}
               </div>
             )}
           </div>
 
           <Link onClick={() => openDrawer("dash")} className="avatar">
-            <div className={`${selectOption === "dash" ? "ring-accent" : "ring-primary"}  ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-1`}>
+            <div
+              className={`${
+                selectOption === "dash" ? "ring-accent" : "ring-primary"
+              }  ring-offset-base-100 w-8 rounded-full ring-2 ring-offset-1`}
+            >
               <img src={profile?.image?.url} />
             </div>
           </Link>

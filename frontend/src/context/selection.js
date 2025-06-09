@@ -2,6 +2,9 @@ import { create } from 'zustand'
 
 
 const selection =create((set) => ({
+   isAuthenticated: false,
+   setIsAuthenticated: (isAuthenticated) => set({isAuthenticated }),
+
     selectedUser: null,
     setSelectedUser: (selectedUser) => set({selectedUser }),
     

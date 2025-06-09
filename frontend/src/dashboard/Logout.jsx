@@ -1,22 +1,18 @@
-import React from 'react'
+import React from "react";
+import axiosInstance from "../utilities/axiosInstance";
 
-const Logout =async () => {
-        try {
-          const { data } = await axios.get(
-            `${import.meta.env.VITE_BACKEND_URL}/user/logout`,
-            {
-              withCredentials: true,
-            }
-          );
-          toast.success("Logout Successfull");
-        //   console.log(data);
-        //   setProfile("");
-          navigateTo("/login");
-          localStorage.removeItem("user");
-          return data
-        } catch (error) {
-          console.log(error);
-        }
-      };
- 
-export default Logout
+const Logout = async () => {
+  try {
+    const { data } = await axiosInstance.get(`/user/logout`);
+    toast.success("Logout Successfull");
+    //   console.log(data);
+    //   setProfile("");
+    navigateTo("/login");
+    localStorage.removeItem("user");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default Logout;

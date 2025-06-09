@@ -53,7 +53,9 @@ export let register = async (req, res) => {
           .json({ message: "Cloud Error.Try Again Letter" });
       }
     }
-    const avatar_url = `https://avatar.iran.liara.run/public/${gender === "male" ? "boy" : "girl"}?username=${name}`;
+    const avatar_url = `https://avatar.iran.liara.run/public/${
+      gender === "male" ? "boy" : "girl"
+    }?username=${name}`;
 
     {
       const hashed_pass = await bycrypt.hash(password, 10);
@@ -149,25 +151,23 @@ export const getAllAdmin = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
-
   try {
     const { id } = req.params;
     const updated_data = { ...req.body };
-  
-    // console.log(updated_data)
+
+    console.log(updated_data);
     const old_data = await user.findById(id);
     // console.log(updated_data)
-  
+
     if (!old_data) {
       return res.status(500).json({ message: "No User Found" });
     }
-  
+
     const avatar_Id = updated_data?.avatar_Id;
     console.log(avatar_Id);
-    let avatar_url="";
-  
+    let avatar_url = "";
+
     if (avatar_Id) {
-  
       if (avatar_Id === "name_first" || avatar_Id === "n_first_last") {
         if (avatar_Id === "name_first") {
           avatar_url = `https://avatar.iran.liara.run/username?username=${updated_data.name}&length=1`;
@@ -176,37 +176,38 @@ export const updateUser = async (req, res) => {
         }
       } else if (avatar_Id === "police" || avatar_Id === "police_f") {
         avatar_url = `https://avatar.iran.liara.run/public/job/police/${old_data.gender}`;
-      }else{
+      } else if (!isNaN(avatar_Id)) {
         avatar_url = `https://avatar.iran.liara.run/public/${updated_data.avatar_Id}`;
-  
+      } else {
+        avatar_url = avatar_Id;
+        console.log("Invalid");
       }
     }
-  
+
     console.log(avatar_url);
-  
+
     updated_data.image = {
       // public_id: cloudinary_response.public_id,
       // url: cloudinary_response.secure_url,
-  
+
       public_id: "none",
-      url:avatar_url,
+      url: avatar_url,
     };
-    console.log(updated_data);
-  
+    // console.log(updated_data);
+
     const updated_profile = await user.findByIdAndUpdate(
       id,
       { $set: updated_data },
       { new: true, runValidation: true }
     );
-  
+
     res.status(200).json({
       message: "Update Successfully",
       // updated_data,
-       updated_profile
+      updated_profile,
     });
-    
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 
   // if (req.files && req.files.image) {
