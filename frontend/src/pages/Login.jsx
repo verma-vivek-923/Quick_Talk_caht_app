@@ -108,26 +108,14 @@ const Login = () => {
             />
           </div>
 
-          {/* <div className="flex w-full mb-2 max-w-md border border-gray-300 rounded">
-            <input
-              type="password"
-              name={password}
-              autoComplete="off"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full p-2 focus:outline-none focus:bg-slate-100"
-            />
-          </div> */}
-          <div className="flex justify-end px-6 mb-4">
+          {/* <div className="flex justify-end px-6 mb-4">
             <Link
               to={"/forgot-password"}
               className="text-sm cursor-pointer hover:underline hover:tracking-tight duration-300 text-blue-700"
             >
               Forgot Password ?
             </Link>
-          </div>
+          </div> */}
           <button
             disabled={loading}
             type="submit"

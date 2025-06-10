@@ -16,8 +16,11 @@ export const AuthProvider = ({ children }) => {
       const islog = localStorage.getItem("user");
 
       if (!token && !islog) {
-        // console.log("first")
-        setLoading(false);
+        setTimeout(() => {
+          console.log("first")
+          setLoading(false);
+          
+        }, 3000);
         return 0;
       }
 

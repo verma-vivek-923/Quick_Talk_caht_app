@@ -68,7 +68,7 @@ const Users = () => {
       <div className="bg-blue-500 w-full mt-2 px-4 text-gray-900 text-lg">
         <h1>Chats</h1>
       </div>
-      <div className="py-4 px-2  h-full overflow-x-scroll ">
+      <div  className="py-4 px-2  h-full overflow-x-scroll ">
         {filteredUser && filteredUser.length > 0 ? (
           filteredUser?.map((element) => {
             if (element._id === profile?._id) {

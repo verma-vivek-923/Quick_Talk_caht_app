@@ -26,7 +26,7 @@ const Toppannel = () => {
             </div>
             <div
               tabIndex={0}
-              className="px-4 overflow-hidden flex flex-col  justify-center"
+              className="px-4 overflow-hidden flex flex-col   justify-center"
             >
               <h1 className="text-md capitalize font-bold group-hover:tracking-wider transition-all duration-300">
                 {selectedUser?.name || "Profile Image"}
@@ -38,10 +38,10 @@ const Toppannel = () => {
 
             <div
               tabIndex={0}
-              className="dropdown-content card card-sm bg-base-100 z-1 w-64 shadow-md"
+              className="dropdown-content card card-sm bg-base-100  w-64 shadow-md"
             >
               {/* <div className="card-body"> */}
-                <div className="card-body bg-gray-900 rounded-xl  w-full max-w-md space-y-2 shadow-xl">
+                <div className="card-body bg-gray-900 rounded-xl z-[50]  w-full max-w-md space-y-2 shadow-xl">
                   <div className="flex flex-col items-center">
                     <div className="bg-gray-600 h-24 w-24 rounded-full flex items-center justify-center text-4xl text-gray-300">
                       <img src={selectedUser?.image?.url} alt="profile" className="w-full object-cover object-center" />
